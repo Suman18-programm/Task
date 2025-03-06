@@ -1,0 +1,35 @@
+@RestController
+@RequestMapping("/api/users")
+public class UserController {
+
+    @Autowired
+    private UserService userService;
+
+    @PostMapping("/create_user")
+    public ResponseEntity<String> createUser(@RequestBody User user) {
+        String result = userService.createUser(user);
+        return ResponseEntity.ok(result);
+    }
+
+    @PostMapping("/get_users")
+    public ResponseEntity<List<User>> getUsers(@RequestParam(required = false) UUID userId,
+                                                @RequestParam(required = false) String mobNum,
+                                                @RequestParam(required = false) UUID managerId) {
+        List<User> users = userService.getUsers(userId, mobNum, managerId);
+        return ResponseEntity.ok(users);
+    }
+
+    @PostMapping("/delete_user")
+    public ResponseEntity<String> deleteUser(@RequestBody Map<String, String> body) {
+        String result = userService.deleteUser(UUID.fromString(body.get("user_id")), body.get("mob_num"));
+        return ResponseEntity.ok(result);
+    }
+
+    @PostMapping("/update_user")
+    public ResponseEntity<String> updateUser(@RequestBody Map<String, Object> body) {
+        List<UUID> userIds = (List<UUID>) body.get("user_ids");
+        Map<String, Object> updateData = (Map<String, Object>) body.get("update_data");
+        String result = userService.updateUser(userIds, updateData);
+        return ResponseEntity.ok(result);
+    }
+}
