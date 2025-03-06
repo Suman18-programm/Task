@@ -1,0 +1,3 @@
+-- Inserting sample managers
+INSERT INTO managers (name) VALUES ('John Doe');
+INSERT INTO managers (name) VALUES ('Jane Smith');
