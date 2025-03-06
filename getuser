@@ -1,0 +1,11 @@
+public List<User> getUsers(UUID userId, String mobNum, UUID managerId) {
+    if (userId != null) {
+        return List.of(userRepository.findByUserId(userId).orElseThrow(() -> new RuntimeException("User not found")));
+    } else if (mobNum != null) {
+        return List.of(userRepository.findByMobNum(mobNum).orElseThrow(() -> new RuntimeException("User not found")));
+    } else if (managerId != null) {
+        return userRepository.findByManagerId(managerId);
+    } else {
+        return userRepository.findAll();
+    }
+}
