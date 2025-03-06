@@ -1,0 +1,9 @@
+public interface UserRepository extends JpaRepository<User, UUID> {
+    Optional<User> findByMobNum(String mobNum);
+    List<User> findByManagerId(UUID managerId);
+    Optional<User> findByUserId(UUID userId);
+}
+
+public interface ManagerRepository extends JpaRepository<Manager, Long> {
+    Optional<Manager> findById(Long id);
+}
