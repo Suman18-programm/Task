@@ -1,0 +1,16 @@
+public String updateUser(List<UUID> userIds, Map<String, Object> updateData) {
+    if (userIds.size() > 1 && updateData.containsKey("managerId")) {
+        return "Manager ID can only be updated for individual users, not in bulk";
+    }
+
+    // Validate the data (e.g., mobile number, PAN, manager ID)
+    for (UUID userId : userIds) {
+        Optional<User> userOpt = userRepository.findById(userId);
+        if (userOpt.isEmpty()) {
+            return "User with ID " + userId + " not found";
+        }
+        // Perform the update (add new entry if manager_id is updated)
+    }
+
+    return "Users updated successfully";
+}
