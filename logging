@@ -1,0 +1,15 @@
+@Slf4j
+@Service
+public class UserService {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private ManagerRepository managerRepository;
+
+    public String createUser(User user) {
+        log.info("Creating user with data: {}", user);
+        // Validation and database logic
+    }
+}
