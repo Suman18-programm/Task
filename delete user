@@ -1,0 +1,9 @@
+public String deleteUser(UUID userId, String mobNum) {
+    Optional<User> userOpt = userId != null ? userRepository.findByUserId(userId) : userRepository.findByMobNum(mobNum);
+    if (userOpt.isEmpty()) {
+        return "User not found";
+    }
+
+    userRepository.delete(userOpt.get());
+    return "User deleted successfully";
+}
