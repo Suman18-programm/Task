@@ -1,0 +1,5 @@
+-- Inserting sample users
+INSERT INTO users (user_id, full_name, mob_num, pan_num, manager_id) 
+VALUES 
+  ('df19a98a-90f2-48e5-bf36-6a6e9c225a0f', 'Alice Johnson', '9876543210', 'ABCDE1234F', 1),
+  ('d8d9fc5f-287d-4b34-b438-d8f85c6fc6f5', 'Bob Williams', '9876543211', 'ABCDE1235G', 2);
